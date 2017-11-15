@@ -1,0 +1,34 @@
+let questionArr = ["Your mind is always buzzing with unexplored ideas and plans.",
+    "Generally speaking, you rely more on your experience than your imagination.",
+    "You find it easy to stay relaxed and focused even when there is some pressure.",
+    "You rarely do something just out of sheer curiosity.",
+    "People can rarely upset you.",
+    "It is often difficult for you to relate to other people’s feelings.",
+    "In a discussion, truth should be more important than people’s sensitivities.",
+    "You rarely get carried away by fantasies and ideas.",
+    "You think that everyone’s views should be respected regardless of whether they are supported by facts or not.",
+    "You feel more energetic after spending time with a group of people."];
+
+let form_tag = "<form class='form-group'>";
+$("#questionContainer").append(form_tag);
+
+for(let i = 0; i < questionArr.length; i++)
+{
+    let html = "<div class='form-group col-lg-6'>";
+    html += "<h4><b>Question " + parseInt(i+1) + "</b></h4>";
+    html += "<h5>" + questionArr[i] + "</h5>";
+    html += "<select class='form-control' id='selectQuestion"+parseInt(i+1)+"'>";
+    html += "<option id='0' disabled selected>Select your option</option>";
+    html += "<option id='1'>1</option>";
+    html += "<option id='2'>2</option>";
+    html += "<option id='3'>3</option>";
+    html += "<option id='4'>4</option>";
+    html += "<option id='5'>5</option>";
+    html += "</select>";
+    html += "</div>";
+
+    $("#questionContainer").append(html);
+}
+$("#questionContainer").append("<a href='#'><button id='submitBtn' class='btn-success col-lg-12' data-toggle='modal' data-target='#myModal' style='margin-bottom: 50px'>Submit</button></a>");
+let form_close_tag = "</form>";
+$("#questionContainer").append(form_close_tag);
