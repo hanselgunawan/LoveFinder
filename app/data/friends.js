@@ -18,7 +18,7 @@ $(document).ready(function() {
         let str_selectedID = $(this).attr("id");
         let selectedID = str_selectedID.substring(14, str_selectedID.length) - 1;//array starts from 0
         let selectedOption = $("#"+str_selectedID+"").children(":selected").text();
-        answerPoints[selectedID] = parseInt(selectedOption);
+        answerPoints[selectedID] = parseInt(selectedOption.substring(0,1));
     });
 
     $(document).on("click", "#submitBtn", function () {
@@ -29,9 +29,16 @@ $(document).ready(function() {
         }
         else
         {
+            let defaultPic = "https://conferencecloud-assets.s3.amazonaws.com/default_avatar.png";
+            let photoUrl = $("#userImgLink").val().trim();
+            if(photoUrl.substring(photoUrl.length, photoUrl.length-4) === ".jpg" || photoUrl.substring(photoUrl.length, photoUrl.length-4) === ".png"
+            || photoUrl.substring(photoUrl.length, photoUrl.length-4) === ".gif" || photoUrl.substring(photoUrl.length, photoUrl.length-4) === ".jpeg")
+            {
+                defaultPic = photoUrl;
+            }
             let userInfo = {
                 name: $("#userName").val().trim(),
-                photo: $("#userImgLink").val().trim(),
+                photo: defaultPic,
                 scores: answerPoints
             };
             let currentUserScore = _.reduce(userInfo.scores, function(memo, num){ return (memo + num); }, 0);
