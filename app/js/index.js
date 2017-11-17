@@ -14,10 +14,10 @@ $("#questionContainer").append(form_tag);
 
 for(let i = 0; i < questionArr.length; i++)
 {
-    let html = "<div class='form-group col-lg-6'>";
+    let html = "<div class='form-group col-lg-12'>";
     html += "<h4><b>Question " + parseInt(i+1) + "</b></h4>";
     html += "<h5>" + questionArr[i] + "</h5>";
-    html += "<select class='form-control' id='selectQuestion"+parseInt(i+1)+"'>";
+    html += "<select class='form-control col-lg-6' id='selectQuestion"+parseInt(i+1)+"'>";
     html += "<option id='0' disabled selected>Select your option</option>";
     html += "<option id='1'>1</option>";
     html += "<option id='2'>2</option>";
@@ -29,6 +29,6 @@ for(let i = 0; i < questionArr.length; i++)
 
     $("#questionContainer").append(html);
 }
-$("#questionContainer").append("<a href='#'><button id='submitBtn' class='btn-success col-lg-12' data-toggle='modal' data-target='#myModal' style='margin-bottom: 50px'>Submit</button></a>");
+$("#questionContainer").append("<button id='submitBtn' class='btn-success col-lg-12' data-toggle='modal' data-target='#myModal' style='margin-bottom: 50px'>Submit</button>");
 let form_close_tag = "</form>";
 $("#questionContainer").append(form_close_tag);
